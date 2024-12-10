@@ -1,0 +1,24 @@
+baseURL: https://blog.oftaylor.com
+languageCode: en-us
+title: Tech Blog of Taylor
+menu:
+  main:
+    - name: GitHub
+      weight: 8
+      url: "https://github.com/thomastaylor312"
+      params:
+        icon: github
+params:
+  sidebar:
+    avatar:
+      enabled: true
+      src: images/avatar.jpg
+      local: true
+  widgets:
+    homepage:
+      - type: "search"
+      - type: "archives"
+      - type: "categories"
+module:
+  imports:
+    - path: github.com/CaiJimmy/hugo-theme-stack/v3
