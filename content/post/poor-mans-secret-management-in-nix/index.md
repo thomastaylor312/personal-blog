@@ -54,8 +54,9 @@ be run after the `writeBoundary` event, which is why that exists in the `entryAf
 Otherwise, this is just pretty much normal bash. What we do here is pass in the `op` cli from the
 nix package we are installing, explicitly pass an account ID (this matters when you're doing
 something on a work machine where you might have multiple accounts), and then use sed to replace the
-value in the file. For security purposes, and to imitate Nix, we then set the file to readonly for
-the user.
+value in the file. Please note that you do need to have 1Password desktop app installed and the CLI
+integration checkbox checked for this to work. For security purposes, and to imitate Nix, we then
+set the file to readonly for the user.
 
 And that is that! There are probably other, better ways to do this, so please reach out if you want
 to correct me here. Otherwise, I hope this is a useful tip for people who might be doing something
