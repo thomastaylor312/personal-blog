@@ -3,7 +3,7 @@ title: A Review of Nix
 description: My deep dive into the world of Nix
 date: 2024-12-09 10:00:00-0700
 draft: false
-image: nix-snowflake-colours.svg
+image: images/nix-snowflake-colours.svg
 categories:
     - Explorations
 tags:
