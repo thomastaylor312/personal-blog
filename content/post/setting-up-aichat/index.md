@@ -133,7 +133,7 @@ option:
 };
 ```
 
-> [!note]
+> **NOTE**
 > If you're unfamiliar with the `home.file` option, it is a way to copy files into your home
 > directory. All of the keys in the map are relative to your home directory.
 
