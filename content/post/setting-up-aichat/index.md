@@ -20,8 +20,8 @@ with a script. This guide assumes that aichat is installed either via your home-
 by following [the installation instructions in the
 repo](https://github.com/sigoden/aichat?tab=readme-ov-file#install).
 
-Most of the code in this repo is found in my `home.activation` block of my home-manager `home.nix`
-file, which you can reference
+Most of the code in this blog post is found in my `home.activation` block of my home-manager
+`home.nix` file, which you can reference
 [here](https://github.com/thomastaylor312/home-manager/blob/c6fa2a046b300c30792caef42221fd9913d6da28/home.nix#L277).
 
 ## Configuration
