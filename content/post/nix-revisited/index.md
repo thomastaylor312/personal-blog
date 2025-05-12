@@ -1,7 +1,7 @@
 ---
 title: Nix Revisited
 description: My thoughts on Nix after 6 months
-date: 2025-05-11 20:00:00-0600
+date: 2025-05-11 16:00:00-0600
 draft: false
 image: images/nix-snowflake-colours.svg
 categories:
