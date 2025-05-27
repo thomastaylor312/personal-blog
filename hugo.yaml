@@ -19,6 +19,9 @@ params:
       - type: "search"
       - type: "archives"
       - type: "categories"
+  imageProcessing:
+    cover:
+      enabled: true
 module:
   imports:
     - path: github.com/CaiJimmy/hugo-theme-stack/v3
