@@ -76,9 +76,12 @@ The problem here is that people aren't just using them for building platforms or
 Kubernetes functionality. They are using them as some sort of mishmash of One API to Rule Them All
 and the True Way™ to install any software. I once was working with a customer, and when they spin up
 a new Kubernetes cluster, they install around 180 CRDs. 180! That is not a platform, that is a mess.
-And it is not just them, I have seen this in many other places as well. People are using CRDs to
-define everything from their CI/CD pipelines to their internal APIs to their data models. It is like
-they think that if they can define it in YAML, it should be a CRD.
+Even if we assume a generous number of 10 CRDs per controller, that is 18 different controllers that
+have to run and take up resources in the cluster, not to even mention the scaling limits you might
+have depending on how many objects created with those CRDs being stored in the cluster. And it is
+not just them, I have seen this in many other places as well. People are using CRDs to define
+everything from their CI/CD pipelines to their internal APIs to their data models. It is like they
+think that if they can define it in YAML, it should be a CRD.
 
 All of this confuses the purpose of Kubernetes. What are CRDs and Kubernetes even for? Is it to run
 infrastructure for applications? Is it to be an API server? Is it a storage location? Is it your
@@ -144,12 +147,31 @@ though we may have first used them when we measured processors in MHz. APIs let 
 a piece of software works in a way that is best for that software, not how it fits into
 Kubernetes.
 
-The key takeaway here: If you have a piece of software that does something only Kubernetes does or
+Look, I know there's nuance here, and I know there are many caveats with no perfect answers. But can
+we at least admit that maybe things have gone a bit too far? Here's how I want you to think about
+it:
+
+**The core rule**: If you have a piece of software that does something only Kubernetes does or
 actually depends on Kubernetes (i.e. you've built a platform that runs on Kubernetes), then sure,
 use CRDs. But if it isn't something that only Kubernetes does, then build a normal API and use that
-instead. I know there is nuance, and I know there are many caveats with no perfect answers. But can
-we at least admit that maybe things have gone a bit too far? There are so many interesting tools out
-there that are, at worst, handcuffing themselves, and, at least, taking on a lot of unnecessary
-technical debt trying to make the round peg of their project fit into the square hole of Kubernetes.
-I'm not saying you should throw out all your CRDs or that any project is bad. But please, for all
-our sanity, think twice before creating yet another CRD.
+instead.
+
+Ask yourself these questions before reaching for CRDs:
+
+- Am I extending Kubernetes itself, or am I just trying to store data/configuration?
+- Would this functionality make sense without Kubernetes in the picture?
+- Am I building a platform that orchestrates Kubernetes resources, or am I building an application
+  that just happens to run on Kubernetes?
+- Will eventual consistency and reconciliation loops actually work for my use case, or do I need
+  synchronous/streaming operations?
+- What happens when something newer (or totally different) comes along, does betting on CRDs help, or
+  hurt, my users down the line?
+
+So many promising tools end up handcuffing themselves, or at the very least, take on a pile of
+unnecessary technical debt, trying to make the round peg of their project fit into the square hole
+of Kubernetes. I’m not saying you should torch your CRDs, or that using them is always wrong. But
+for the love of software (and our collective sanity), pause and really _think twice_ before reaching
+for another CRD. A little reflection up front can save a lot of pain later on.
+
+UPDATE (05/27/25): Clarified the example of 180 CRDs and the conclusion to be more clear about the
+core rule based on some great feedback I received.
