@@ -122,13 +122,28 @@ and stream data back in the response until complete using CRDs? Good luck).
 
 Beyond the technical aspects though, what happens when the next big thing after Kubernetes comes
 along? Kubernetes is 10 years old at this point. In the tech world, that is ancient, so it is ripe
-for disruption. If you've depended solely on CRDs, what happens then? I think this is best
+for disruption. If you've depended solely on CRDs, what happens then? ~I think this is best
 illustrated by the world of GitOps. Say what you will about GitOps, it is a powerful tool that many
 users find value in for deploying applications. However, pretty much all of the options out there
 all depend on Kubernetes and CRDs even if their software might not necessarily be tied directly to
-Kubernetes. To even use a GitOps tool, you have to have a Kubernetes cluster. When the next big
-thing comes along, now you'll have to rewrite to use something else. This feels like putting
-handcuffs on yourself when it comes to innovation and flexibility.
+Kubernetes. To even use a GitOps tool, you have to have a Kubernetes cluster.~
+
+**UPDATE (05/28/25): An astute reader pointed out that there is some nuance in the various GitOps
+tooling options that I don't really want to get into here, especially those that truely are meant
+for Kubernetes applications. I've left the previous example crossed out and replaced with the new
+one below**
+
+A great example of this problem in action is the Kro project. It dynamically generates a CRD for
+every grouping of APIs you want to use in your Kubernetes cluster. Meaning your APIs for _anything_
+are now dependent on Kubernetes. You also get projects like Cilium, which are fairly powerful and
+useful in a whole host of networking use cases. But guess what? If you look at all of the
+installation options in the docs, it is just Kubernetes and more Kubernetes. Even the data store
+options are CRDs by default. At my previous job, we needed the security benefits of Cilium, but
+inside of Nomad. So we had to write our own tool (called
+[Netreap](https://github.com/cosmonic-labs/netreap) if you're curious) to be able to take advantage
+of it. If I have to already rewrite stuff now in the age of Kubernetes, what is going to happen when
+the next big thing comes along? You'll have to rewrite to use something else at the cost of a lot of
+time. This feels like putting handcuffs on yourself when it comes to innovation and flexibility.
 
 ## Choosing Wisely
 
@@ -173,5 +188,5 @@ of Kubernetes. I’m not saying you should torch your CRDs, or that using them i
 for the love of software (and our collective sanity), pause and really _think twice_ before reaching
 for another CRD. A little reflection up front can save a lot of pain later on.
 
-UPDATE (05/27/25): Clarified the example of 180 CRDs and the conclusion to be more clear about the
-core rule based on some great feedback I received.
+**UPDATE (05/27/25): Clarified the example of 180 CRDs and the conclusion to be more clear about the
+core rule based on some great feedback I received.**
