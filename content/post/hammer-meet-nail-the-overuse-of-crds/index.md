@@ -110,7 +110,7 @@ somehow treat stomach issues, head issues, foot issues, and cure cancer. That is
 is a fake. I really like this analogy because there honestly might be some possibility that it could
 help with one of those things (just like how CRDs can help build platforms), but it is highly
 unlikely it helps with all of them. We have tools for almost every single one of the things
-mentioned above that is purpose built for handling that specific use case, with its associated
+mentioned above that are purpose built for handling that specific use case, with its associated
 tradeoffs depending on your needs.
 
 There are so many problems with this approach that just make me worry. Kubernetes wasn't built to be
