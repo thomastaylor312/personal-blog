@@ -4,7 +4,7 @@ title: Tech Blog of Taylor
 menu:
   main:
     - name: GitHub
-      weight: 8
+      weight: 100
       url: "https://github.com/thomastaylor312"
       params:
         icon: github
@@ -19,6 +19,8 @@ params:
       - type: "search"
       - type: "archives"
       - type: "categories"
+    page:
+      - type: "toc"
   imageProcessing:
     cover:
       enabled: true
